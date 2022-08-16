@@ -1,6 +1,6 @@
 import os
 os.system('cls||clear')
-#Programa para sacar X usando la formula genera
+#Programa para sacar X usando la formula general
 #JuanPaCostas
 
 a = int(input("Ingresa el valor de a> "))

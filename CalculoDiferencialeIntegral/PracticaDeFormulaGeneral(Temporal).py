@@ -1,4 +1,4 @@
-#Programa para sacar X usando la formula genera
+#Programa para sacar X de 8 ejercicios usando la formula general
 #JuanPaCostas
 
 ListaA = [3,5,10,12/5,11/7,2/6,2/6,2.54]
