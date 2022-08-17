@@ -3,36 +3,24 @@ os.system('cls||clear')
 #Programa para sacar X usando la formula general
 #JuanPaCostas
 
-a = input("Ingresa el valor de a> ")
+inputs = []
 
-listaA = []
-listaA.extend(a.split('/'))
-if len(listaA)==1:
-    a = float(listaA[0])
-elif len(listaA)==2:
-    a = float(listaA[0])/float(listaA[1])
+inputs.append(input("Ingresa el valor de a> "))
+inputs.append(input("Ingresa el valor de b> "))
+inputs.append(input("Ingresa el valor de c> "))
 
-b = input("Ingresa el valor de b> ")
+for i in range (0,len(inputs)):
+    lista = []
+    lista.extend(inputs[i].split('/'))
+    if len(lista)==1:
+        inputs[i] = float(lista[0])
+    elif len(lista)==2:
+        inputs[i] = float(lista[0])/float(lista[1])
+    lista.clear()
 
-listaB = []
-listaB.extend(b.split('/'))
-if len(listaB)==1:
-    b = float(listaB[0])
-elif len(listaB)==2:
-    b = float(listaB[0])/float(listaB[1])
-
-c = input("Ingresa el valor de c> ")
-
-listaC = []
-listaC.extend(c.split('/'))
-if len(listaC)==1:
-    c = float(listaC[0])
-elif len(listaC)==2:
-    c = float(listaC[0])/float(listaC[1])
-
-part1 = b*-1
-part2 = (b**2)-(4*a*c)
-part3 = a*2
+part1 = inputs[1]*-1
+part2 = (inputs[1]**2)-(4*inputs[0]*inputs[2])
+part3 = inputs[0]*2
 
 if part2 >= 0:
     part2 = part2**(1/2)
@@ -47,3 +35,4 @@ else:
     
     print("X1 = ", (part1/part3), " + ", part2/part3, "i")
     print("X2 = ", (part1/part3), " - ", part2/part3, "i") 
+
