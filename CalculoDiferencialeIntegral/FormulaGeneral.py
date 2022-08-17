@@ -47,12 +47,3 @@ else:
     
     print("X1 = ", (part1/part3), " + ", part2/part3, "i")
     print("X2 = ", (part1/part3), " - ", part2/part3, "i") 
-
-    
-
-    
-
-
-
-
-
