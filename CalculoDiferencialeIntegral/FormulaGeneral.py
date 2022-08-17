@@ -3,9 +3,32 @@ os.system('cls||clear')
 #Programa para sacar X usando la formula general
 #JuanPaCostas
 
-a = int(input("Ingresa el valor de a> "))
+a = input("Ingresa el valor de a> ")
+
+listaA = []
+listaA.extend(a.split('/'))
+if len(listaA)==1:
+    a = float(listaA(0))
+elif len(listaA)==2:
+    a = float(listaA[0])/float(listaA[1])
+
 b = int(input("Ingresa el valor de b> "))
+
+listaB = []
+listaB.extend(b.split('/'))
+if len(listaB)==1:
+    b = float(listaB(0))
+elif len(listaB)==2:
+    b = float(listaB[0])/float(listaB[1])
+
 c = int(input("Ingresa el valor de c> "))
+
+listaC = []
+listaC.extend(c.split('/'))
+if len(listaC)==1:
+    c = float(listaC(0))
+elif len(listaC)==2:
+    c = float(listaC[0])/float(listaC[1])
 
 part1 = b*-1
 part2 = (b**2)-(4*a*c)
