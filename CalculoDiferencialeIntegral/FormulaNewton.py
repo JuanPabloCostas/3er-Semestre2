@@ -26,12 +26,15 @@ derivadas.append(inputs[7]*1)
 
 
 for k in range(0,10):
-    x = random.randint(0,1000)
+    x = random.randint(0,10000)
+    print("X= ",x)
     i = 1
+    oldx = None
     while i > 0:
         fx = inputs[0]*x**8 + inputs[1]*x**7 + inputs[2]*x**6 + inputs[3]*x**5 + inputs[4]*x**4 + inputs[5]*x**3 + inputs[6]*x**2 + inputs[7]*x**1 + inputs[8]
         fxd = derivadas[0]*x**7 + derivadas[1]*x**6 + derivadas[2]*x**5 + derivadas[3]*x**4 + derivadas[4]*x**3 + derivadas[5]*x**2 + derivadas[6]*x**1 + derivadas[7]
         x = x - fx/fxd
-        if fx == 0:
+        if oldx == x:
             i = 0
+        oldx = x
     print("raiz= ",x)

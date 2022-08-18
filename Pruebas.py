@@ -3,15 +3,15 @@
 #JuanPaCostas
 import random
 
-a = 1
-b = -2
-c = 3
-d = -4
-e = -2
-f = -9
-g = 5
-h = -5
-i = 7
+a = random.randint(-50,50)
+b = random.randint(-50,50)
+c = random.randint(-50,50)
+d = random.randint(-50,50)
+e = random.randint(-50,50)
+f = random.randint(-50,50)
+g = random.randint(-50,50)
+h = random.randint(-50,50)
+i = random.randint(-50,50)
 
 derivadas = []
 derivadas.append(a*8)
