@@ -1,35 +1,40 @@
+
 #Experimentos
 #JuanPaCostas
+import random
 
-inputs = []
+a = 1
+b = -2
+c = 3
+d = -4
+e = -2
+f = -9
+g = 5
+h = -5
+i = 7
 
-inputs.append(input("Ingresa el valor de a> "))
-inputs.append(input("Ingresa el valor de b> "))
-inputs.append(input("Ingresa el valor de c> "))
+derivadas = []
+derivadas.append(a*8)
+derivadas.append(b*7)
+derivadas.append(c*6)
+derivadas.append(d*5)
+derivadas.append(e*4)
+derivadas.append(f*3)
+derivadas.append(g*2)
+derivadas.append(h*1)
 
-for i in range (0,len(inputs)):
-    lista = []
-    lista.extend(inputs[i].split('/'))
-    if len(lista)==1:
-        inputs[i] = float(lista[0])
-    elif len(lista)==2:
-        inputs[i] = float(lista[0])/float(lista[1])
-    lista.clear()
 
-part1 = inputs[1]*-1
-part2 = (inputs[1]**2)-(4*inputs[0]*inputs[2])
-part3 = inputs[0]*2
-
-if part2 >= 0:
-    part2 = part2**(1/2)
-    x1 = (part1 + part2)/part3
-    x2 = (part1 - part2)/part3
-
-    print("X1 = ", x1)
-    print("X2 = ", x2)
-
-else:
-    part2 = (part2*-1)**(1/2)
+for k in range(0,10):
+    x = random.randint(0,10000)
+    print("X= ",x)
+    i = 1
+    oldx = None
+    while i > 0:
+        fx = a*x**8 + b*x**7 + c*x**6 + d*x**5 + e*x**4 + f*x**3 + g*x**2 + h*x**1 + i
+        fxd = derivadas[0]*x**7 + derivadas[1]*x**6 + derivadas[2]*x**5 + derivadas[3]*x**4 + derivadas[4]*x**3 + derivadas[5]*x**2 + derivadas[6]*x**1 + derivadas[7]
+        x = x - fx/fxd        
+        if oldx == x:
+            i = 0
+        oldx = x
+    print("raiz= ",x)
     
-    print("X1 = ", (part1/part3), " + ", part2/part3, "i")
-    print("X2 = ", (part1/part3), " - ", part2/part3, "i") 

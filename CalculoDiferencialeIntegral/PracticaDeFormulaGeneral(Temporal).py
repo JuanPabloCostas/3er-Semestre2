@@ -5,7 +5,7 @@ ListaA = [3,5,10,12/5,11/7,2/6,2/6,2.54]
 ListaB = [-2,4,9,-7/5,3,-8,8,-1.3]
 ListaC = [6,-20,-3,8,-11,-10,-10,9.4]
 
-for i in range (0, 8):
+for i in range (0, len(ListaA)):
     print("Ejercicio ", (i+1))
 
     part1 = ListaB[i]*-1
