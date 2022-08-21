@@ -1,5 +1,4 @@
-
-#Experimentos
+#Generador y solvedor de ecuaciones de 8to grado
 #JuanPaCostas
 import random
 
@@ -24,8 +23,7 @@ derivadas.append(g*2)
 derivadas.append(h*1)
 
 raices = []
-oldraiz = None
-while len(raices) < 5:
+while len(raices) < 10:
     x = random.uniform(-500000, 500000)
     i = 1
     raiz = None
@@ -46,23 +44,4 @@ while len(raices) < 5:
     if stop == False:
         raices.append(raiz)
         print("Raiz",len(raices),"= ",raiz)
-    oldraiz = raiz
 print("Se acabo")
-    
-
-    
-# def Ordenar(vector,pivote):
-#     for i in range (0, len(vector)):
-#         if vector[i] > vector[pivote]:
-#             aux = vector[pivote]
-#             vector[pivote] = vector[i]
-#             vector[i] = aux
-#     return vector
-
-
-# vector = [8,11,3,29,18,10,22,7]
-# print(vector)
-# for k in range (0, len(vector)):
-#     pivote = k
-#     vector = Ordenar(vector, pivote)
-#     print(vector)
