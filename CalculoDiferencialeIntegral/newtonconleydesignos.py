@@ -18,7 +18,7 @@ os.system('cls||clear')
 
 import re
 
-str = "x^1000+3x^3+2x-200"
+str = "x^1000-3x^3+2x-200"
 alt = str
 
 hola = []
@@ -37,7 +37,10 @@ exponentes = []
 
 for i in range (0, len(constantes)):
     consexp = []
+    alerta = False
     cons = constantes[i].replace("x", "")
+    if constantes[i] == cons:
+        alerta = True
     consexp.extend(cons.split("^"))
     if consexp[0] == "":
         constantes[i] = "1"
@@ -46,7 +49,11 @@ for i in range (0, len(constantes)):
     if len(consexp) >= 2:
         exponentes.append(consexp[1])
     else:
-        exponentes.append("1")
+        if alerta:
+            exponentes.append("0")
+        else: 
+            exponentes.append("1")
+    
 
 print("Constantes: ",constantes)
 print("Exponentes: ", exponentes)
