@@ -18,7 +18,7 @@ os.system('cls||clear')
 
 import re
 
-str = "3x^100+5x^2-2x-6"
+str = "x^1000+3x^3+2x-200"
 alt = str
 
 hola = []
@@ -33,10 +33,23 @@ alt = alt.replace("-", "@-")
 constantes = []
 constantes.extend(alt.split("@"))
 
+exponentes = []
 
+for i in range (0, len(constantes)):
+    consexp = []
+    cons = constantes[i].replace("x", "")
+    consexp.extend(cons.split("^"))
+    if consexp[0] == "":
+        constantes[i] = "1"
+    else:
+        constantes[i] = consexp[0]
+    if len(consexp) >= 2:
+        exponentes.append(consexp[1])
+    else:
+        exponentes.append("1")
 
-
-
+print("Constantes: ",constantes)
+print("Exponentes: ", exponentes)
 
 
 # positivos = str.replace("+", "@")
