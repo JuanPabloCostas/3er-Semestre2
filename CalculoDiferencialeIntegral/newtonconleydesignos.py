@@ -18,17 +18,24 @@ os.system('cls||clear')
 
 import re
 
-str = "3x^3+5x^2-2x-6"
+str = "3x^100+5x^2-2x-6"
+alt = str
 
 hola = []
 adios = []
 
+str = str.replace("+", "@+")
+str = str.replace("-", "#-")
+
+alt = alt.replace("+", "@")
+alt = alt.replace("-", "@-")
+
 constantes = []
+constantes.extend(alt.split("@"))
 
-str = str.replace("+", "@")
-str = str.replace("-", "#")
 
-print(str)
+
+
 
 
 
