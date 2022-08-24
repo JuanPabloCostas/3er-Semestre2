@@ -1,4 +1,5 @@
 import os
+import random
 os.system('cls||clear')
 
 # Programa para encontrar la raiz de una ecuacion de caulquier nivel y
@@ -18,14 +19,9 @@ os.system('cls||clear')
 
 import re
 
-str = "x^1000-3x^3+2x-200"
+str = "x^10-3x^3+2x-200"
+# str = input("ingrese> ")
 alt = str
-
-hola = []
-adios = []
-
-str = str.replace("+", "@+")
-str = str.replace("-", "#-")
 
 alt = alt.replace("+", "@")
 alt = alt.replace("-", "@-")
@@ -54,9 +50,73 @@ for i in range (0, len(constantes)):
         else: 
             exponentes.append("1")
     
+inputs = []
+for i in range (0,len(constantes)):
+    inputs.append(float(constantes[i]))
 
-print("Constantes: ",constantes)
-print("Exponentes: ", exponentes)
+integers = []
+for i in range (0,len(exponentes)):
+    integers.append(float(exponentes[i]))
+
+derivadas = []
+for i in range (0,(len(integers))):
+    derivadas.append(inputs[i]*integers[i])
+
+print("Contantes: ",inputs)
+print("Exponentes: ", integers)
+print("Derivadas: ",derivadas)
+
+# float("Constantes: ",constantes)
+
+x = 0
+fx = 0
+fxd = 0
+
+
+raices = []
+
+while len(raices) < 15:
+    x = random.uniform(-50,50)
+    i = 1
+    raiz = None
+    oldx = x
+    fx = 0
+    fxd = 0
+    while i > 0:
+        for i in range (0,len(inputs)):
+            if integers[i] == 0:
+                fx = fx + inputs[i]
+            else:
+                fx = fx + inputs[i]*x**integers[i]
+        # fx = inputs[0]*x**8 + inputs[1]*x**7 + inputs[2]*x**6 + inputs[3]*x**5 + inputs[4]*x**4 + inputs[5]*x**3 + inputs[6]*x**2 + inputs[7]*x**1 + inputs[8]
+        for i in range (0,(len(derivadas))):
+            if (integers[i]-1) == 0:
+                fxd = fxd + derivadas[i]
+            else:
+                fxd = fxd + derivadas[i]*x**(integers[i]-1)
+                
+        # fxd = derivadas[0]*(x**7) + derivadas[1]*(x**6) + derivadas[2]*(x**5) + derivadas[3]*(x**4) + derivadas[4]*(x**3) + derivadas[5]*(x**2) + derivadas[6]*(x**1) + derivadas[7]
+        x = x - fx/fxd
+        fx = 0
+        fxd = 0
+        # print("x=",x)
+        # print("fx=",fx)
+        # print("fxd=",fxd)
+        if (oldx - x) < 0.0000001 and (oldx - x) > -0.0000001 :
+            i = 0
+            raiz = x
+        oldx = x
+    stop = False
+    for k in range(0,len(raices)):
+        if (raices[k] - raiz) < 0.001 and (raiz - raices[k]) < 0.001:
+            stop = True
+            break
+    if stop == False:
+        raices.append(raiz)
+        print("Raiz",len(raices),"= ",raiz)
+print("Se acabo")
+
+
 
 
 # positivos = str.replace("+", "@")
@@ -88,11 +148,4 @@ print("Exponentes: ", exponentes)
 
 # print("cantidad de postivos: ",cantPos)
 # print("cantidad de negativos: ",cantNeg)
-
-print("---------------")
-
-soy = "soy"
-juan = "juan"
-soyjuan = ("9"+juan)
-print(soyjuan)
 

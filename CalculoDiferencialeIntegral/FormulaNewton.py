@@ -70,13 +70,13 @@ while len(raices) < 15:
         # print("x=",x)
         # print("fx=",fx)
         # print("fxd=",fxd)
-        if (oldx - x) < 0.00000001 and (oldx - x) > -0.00000001 :
+        if (oldx - x) < 0.0001 and (oldx - x) > -0.0001 :
             i = 0
             raiz = x
         oldx = x
     stop = False
     for k in range(0,len(raices)):
-        if (raices[k] - raiz) < 0.00001 or (raiz - raices[k]) < 0.00001:
+        if (raices[k] - raiz) < 0.001 or (raiz - raices[k]) < 0.001:
             stop = True
             break
     if stop == False:
