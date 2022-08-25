@@ -48,5 +48,27 @@ print("Contantes: ",inputs)
 print("Exponentes: ", integers)
 print("Derivadas: ",derivadas)
 
-a = inputs[len(inputs)-1]
-b = inputs[0]
+p = int(inputs[len(inputs)-1])
+q = int(inputs[0])
+
+
+def sacarComunes(a):
+    comunes = []
+    for i in range(1,(a+1)):
+        if(a%i)==0:
+            comunes.append(i)
+    return comunes
+
+numeradores = sacarComunes(p)
+denominadores = sacarComunes(q)
+
+print("Posibles Raizes:")
+for i in range(0,len(denominadores)):
+    for k in range(0,len(numeradores)):
+        print(numeradores[k],"/",denominadores[i])
+    print("")
+
+
+
+
+
