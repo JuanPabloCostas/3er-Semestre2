@@ -3,7 +3,7 @@ import os
 os.system('cls||clear')
 
 # ex = int(input("Ingresa el exponente> "))
-exGeneral = 10
+exGeneral = 8
 
 ecuaciones = []
 
@@ -14,12 +14,7 @@ for k in range(0,exGeneral+1):
     exA = k
     exB = 0
     for i in range(0,k+1):
-        if exA == 0 and exB == 0:
-            auxC = "1"
-        elif constante == 1:
-            auxC = ""
-        else:
-            auxC= str(int(constante))
+        auxC= str(int(constante))
 
         if exA == 0:
             auxA = ""
@@ -35,9 +30,9 @@ for k in range(0,exGeneral+1):
         else:
             auxB = "b^"+str(exB)
 
-        ecuaciones.append(auxC+auxA+auxB)
+        ecuaciones.append(auxC)
         constante = constante * exA / (exB+1)
         exA = exA-1
         exB = exB+1
-    ej = (str(ecuaciones)).replace(","," +").replace("'","").replace("[","").replace("]","").center(140)
+    ej = (str(ecuaciones)).replace(",","").center(120)
     print(ej) 
