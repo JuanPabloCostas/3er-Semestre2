@@ -2,7 +2,7 @@ import os
 import random
 os.system('cls||clear')
 
-str = input("Hola  ")
+str = input("Ingrese la ecuacion> ")
 alt = str
 
 alt = alt.replace("+", "@")

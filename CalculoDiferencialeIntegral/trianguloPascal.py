@@ -3,7 +3,7 @@ import os
 os.system('cls||clear')
 
 # ex = int(input("Ingresa el exponente> "))
-exGeneral = 8
+exGeneral = int(input("Ingrese el exponente> "))
 
 ecuaciones = []
 

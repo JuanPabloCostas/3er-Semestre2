@@ -2,7 +2,8 @@ import os
 import random
 os.system('cls||clear')
 
-str = "x^3-3x^2+3x-1"
+str = "7x^5+4.3x^4+7.87x^3+7.083x^2+3.3747x+11.03723"
+# str = input("Ingrese la ecuacion> ")
 alt = str
 
 alt = alt.replace("+", "@")
@@ -49,7 +50,8 @@ print("Exponentes: ", integers)
 print("Derivadas: ",derivadas)
 
 print("")
-posRaiz = 1
+# posRaiz = float(input("Ingrese la posible raiz> "))
+posRaiz = -1.109726227714059
 alt = []
 resultados = []
 resultados.append(inputs[0])

@@ -3,6 +3,7 @@ import random
 os.system('cls||clear')
 
 str = "10x^5+10x^3-2x+15"
+# str = input("Ingrese la ecuacion> ")
 alt = str
 
 alt = alt.replace("+", "@")

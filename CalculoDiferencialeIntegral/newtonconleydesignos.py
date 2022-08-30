@@ -19,7 +19,7 @@ os.system('cls||clear')
 
 import re
 
-str = "x^10-3x^3+2x-200"
+str = "7x^5+4.3x^4+7.87x^3+7.083x^2+3.3747x+11.03723"
 # str = input("ingrese> ")
 alt = str
 
