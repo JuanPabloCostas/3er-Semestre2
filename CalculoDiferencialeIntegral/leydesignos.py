@@ -1,5 +1,4 @@
 import os
-import random
 os.system('cls||clear')
 
 str = input("Ingrese la ecuacion> ")
