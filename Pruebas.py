@@ -4,7 +4,11 @@ from tkinter import *
 # Were creating the main window
 root = Tk()
 
-myButton = Button(root, text="Click me", padx=50, pady=50)
+def MyClick():
+    myLabel = Label(root, text="Look i clicked a button")
+    myLabel.pack()
+
+myButton = Button(root, text="Click me", command=MyClick, fg="blue", bg="#FFF")
 myButton.pack()
 
 
