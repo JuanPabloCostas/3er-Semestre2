@@ -4,7 +4,8 @@
 #Juan Carlos Salas Gallegos
 #Jesús Alberto Vázquez Rioja
 #Grupo 30
-
+from time import time
+from numpy import *
 def Ordenar(vector):
     for c in range(0,len(vector)):
         pivote=c
@@ -14,7 +15,6 @@ def Ordenar(vector):
                 vector[i] = vector[pivote]
                 vector[pivote] = aux
         print(vector)
-    return vector
             
 
 vector = [8,11,3,29,18,10,22,7]
