@@ -40,8 +40,34 @@ def strtoarray(ecu):
     return cons, expo
 
 def ecuacion4to(binomio):
-    
+    constantes = binomio[0]
+    exponentes = binomio[1]
+
+    binomios = []
+    for i in range(len(constantes)):
+        constante = constantes[i]
+        exX = exponentes[i]
+        exY = 0
+
+        
+        for k in range(int(exX+1)):
+            ecuacion = []
+            
+            ecuacion.append(constante)
+            ecuacion.append(exX)
+            ecuacion.append(exY)
+
+            binomios.append(ecuacion)
+
+            constante = constante*exX/(exY+1)
+            exX = exX-1
+            exY = exY+1
+
+    print(binomios)
+        
     return
+
+ecuacion4to(strtoarray("8x^2-3x"))
 
 
 
