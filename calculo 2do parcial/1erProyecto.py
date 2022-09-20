@@ -83,12 +83,11 @@ def ecuacion4to(binomio):
         i = i + 1
 
 
-    print("Paso 1: ", binomios)
-    print("Paso 2: ", binomiosNeg)
+    print("Derivada: ", binomios)
         
     return
 
-ecuacion4to(strtoarray("8x^2-3x"))
+ecuacion4to(strtoarray("7x^3-6x^2+1"))
 
 
 
