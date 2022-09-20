@@ -75,7 +75,12 @@ def ecuacion4to(binomio):
         binomios[i][2] = binomios[i][2] - 1
 
     # Paso 4, h = 0
-    
+    i = 0
+    while i < len(binomios):
+        if binomios[i][2] != 0:
+            binomios.pop(i)
+            i = i - 1
+        i = i + 1
 
 
     print("Paso 1: ", binomios)
