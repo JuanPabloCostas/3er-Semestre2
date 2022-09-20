@@ -42,8 +42,9 @@ def strtoarray(ecu):
 def ecuacion4to(binomio):
     constantes = binomio[0]
     exponentes = binomio[1]
-
+    # Paso 1 y 2, se agregan ecuaciones a la lista
     binomios = []
+    binomiosNeg = []
     for i in range(len(constantes)):
         constante = constantes[i]
         exX = exponentes[i]
@@ -58,12 +59,27 @@ def ecuacion4to(binomio):
             ecuacion.append(exY)
 
             binomios.append(ecuacion)
+            if k == 0:
+                binomiosNeg.append(ecuacion)
 
             constante = constante*exX/(exY+1)
             exX = exX-1
             exY = exY+1
+    
+    # Paso 2, restar binomios
+    for i in range(len(binomiosNeg)):
+        binomios.remove(binomiosNeg[i])
 
-    print(binomios)
+    # Paso 3, divido h
+    for i in range(len(binomios)):
+        binomios[i][2] = binomios[i][2] - 1
+
+    # Paso 4, h = 0
+    
+
+
+    print("Paso 1: ", binomios)
+    print("Paso 2: ", binomiosNeg)
         
     return
 
