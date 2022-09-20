@@ -2,7 +2,7 @@ import os
 os.system('cls||clear')
 
 # str = input("Ingrese la ecuacion> ")
-str = "x^4+x^3+x^2+x+1"
+str = "x^4+x^3-x^2-2x-1"
 alt = str
 
 alt = alt.replace("+", "@")

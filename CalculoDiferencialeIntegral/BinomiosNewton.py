@@ -3,11 +3,11 @@ import os
 os.system('cls||clear')
 
 # ex = int(input("Ingresa el exponente> "))
-exGeneral = int(input("Ingrese el exponente> "))
-
+# exGeneral = int(input("Ingrese el exponente> "))
+exGeneral = 8
 ecuaciones = []
 
-for k in range(0,exGeneral+1):
+for k in range(exGeneral,exGeneral+1):
     ecuaciones.clear()
 
     constante = 1

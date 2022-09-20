@@ -2,24 +2,10 @@ import os
 import random
 os.system('cls||clear')
 
-# Programa para encontrar la raiz de una ecuacion de caulquier nivel y
-# utilizando la ey de signos de descarte
-#Juan Pablo Costas
-
-# import re
-
-# ecuacion = input("Ingresa la ecuacion> ")
-
-# constantes = []
-
-# constantes.extend(re.split('+|-', ecuacion))
-
-# for i in range(0,len(constantes)):
-#     print(constantes[i])
 
 import re
 
-str = "7x^5+4.3x^4+7.87x^3+7.083x^2+3.3747x+11.03723"
+str = "8x^3+2x^2-3x-1"
 # str = input("ingrese> ")
 alt = str
 
