@@ -83,11 +83,17 @@ def ecuacion4to(binomio):
         i = i + 1
 
 
-    print("Derivada: ", binomios)
+    # Formato
+    formato = []
+    for i in range(len(binomios)):
+        a = binomios[i][0]
+        b = binomios[i][1]
+        formato.append(str(int(a))+"x^"+str(int(b)))
         
+    print(formato)
     return
 
-ecuacion4to(strtoarray("7x^3-6x^2+1"))
+ecuacion4to(strtoarray("7x^3-6x+1"))
 
 
 
