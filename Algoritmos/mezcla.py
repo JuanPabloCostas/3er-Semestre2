@@ -1,8 +1,5 @@
-
-
-#algoritmo de método de ordenamiento por mezcla (mergeSort)
+import numpy as np
 from time import time
-#import numpy as np
 
 def mergeSort(alista):
     print("Divide", alista)
@@ -33,8 +30,7 @@ def mergeSort(alista):
             k = k+1
         print("Mezclando", alista)
 
-alista = [38,47,23,3,9,82,10]
-#alista = np.random.randint(100, size=50)
+alista = [34,93,19,58,12,28,95,37,23,80,57,82,55,48,21,39,53,65,30,32,84,64,44,68,36,1,100,245,382,920,345,675,129,322,432,396]
 print("Lista original", alista)
 t0 = time()
 mergeSort(alista)

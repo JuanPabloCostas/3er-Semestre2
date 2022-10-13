@@ -100,10 +100,10 @@ def ecuacion4to(binomio):
 
         formato.append(a+b)
         
-    print(str(formato).replace(" ","").replace("[","").replace("]","").replace("'","").replace(","," "))
+    print("Derivada: ", str(formato).replace(" ","").replace("[","").replace("]","").replace("'","").replace(","," "))
     return
 
-ecuacion4to(strtoarray("7x^3-6x^2+1"))
+ecuacion4to(strtoarray("7x^9-3x"))
 
 
 
