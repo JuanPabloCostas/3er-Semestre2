@@ -103,7 +103,9 @@ def ecuacion4to(binomio):
     print("Derivada: ", str(formato).replace(" ","").replace("[","").replace("]","").replace("'","").replace(","," "))
     return
 
-ecuacion4to(strtoarray("7x^9-3x"))
+# La ecuacion se ingresa aqui<< >>
+a = input("Ingrese la ecuacion> ")
+ecuacion4to(strtoarray(a))
 
 
 
