@@ -1,4 +1,5 @@
-a = int(10.9)
+lista = [1,2,4]
+lista1 = [6,7,8]
 
-print(a)
-
+listoaoa = lista + lista1
+print(listoaoa)

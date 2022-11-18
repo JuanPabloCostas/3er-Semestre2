@@ -6,37 +6,41 @@
 from time import time
 
 def Ordenar(vector):
+    comparaciones = 0
     for c in range(0,len(vector)):
         pivote=c
         for i in range(c,len(vector)):
+            comparaciones = comparaciones + 1
             if vector[i] < vector[pivote]:
                 aux = vector[i]
                 vector[i] = vector[pivote]
                 vector[pivote] = aux
+    print("Comparaciones= ", comparaciones)
     return vector
 
-def BuscaB(lista, k):
-    found = False
+def BuscaB(lista, k, lenA):
+    lenA = lenA
     middle = int(len(lista)/2)
     if lista[middle] == k:
-        print("Lo encontre")
-        found = True
-        return found
+        location = lenA + middle
+        print("Lo encontre en la posicion", location)
+        return location
     if lista[middle] > k and len(lista) > 1:
-        return BuscaB(lista[:middle],k)
+        return BuscaB(lista[:middle],k,lenA)
     if lista[middle] < k and len(lista) > 1:
-        return BuscaB(lista[middle:],k)
-    return found
+        lenA = lenA + (len(lista)-len(lista[middle+1:]))
+        return BuscaB(lista[middle+1:],k, lenA)
+    return False
 
-lista = [15,19,31,10,11,22,71]
-k = 11
+lista = [63, 94, 111, 125, 204, 209, 250, 290, 310, 348, 420]
+k = 290
 
 
 
 listaO = Ordenar(lista)
-print(listaO)
+print("Lista ordenada", listaO)
 t0 = time()
-a = BuscaB(listaO, k)
+a = BuscaB(listaO, k, 0, 0)
 
 t1 = time()
 print(a)

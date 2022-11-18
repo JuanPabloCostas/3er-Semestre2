@@ -613,6 +613,135 @@ def s_pascal():
     b_calcular = Button(f_pascal, text="Calcular", command=lambda: cal_pascal(int(exGeneral.get())))
     b_calcular.pack()
 
+f_derivadas = LabelFrame(root, text="Derivadas", padx=10,pady=10)
+def s_derivadas():
+    f_formula.grid_remove()
+    f_newton.grid_remove()
+    f_signos.grid_remove()
+    f_posibles.grid_remove()
+    f_sintetica.grid_remove()
+    f_binomios.grid_remove()
+    f_pascal.grid_remove()
+    f_autor.grid_remove()
+    f_autor1.grid_remove()
+
+    f_derivadas.grid(row=0,column=1,padx=10,pady=10)
+    l_res = Label(f_derivadas, text="Ingresa la ecuacion (2x^2-x+1)")
+    l_res.pack()
+
+    ecu = Entry(f_derivadas,width=10)
+    ecu.pack()
+
+    def cal_derivadas(ecu):
+        def strtoarray(ecu):
+            ecu = ecu.replace("+", "@")
+            ecu = ecu.replace("-", "@-")
+
+            constantes = []
+            constantes.extend(ecu.split("@"))
+
+            exponentes = []
+
+            for i in range (0, len(constantes)):
+                consexp = []
+                alerta = False
+                cons = constantes[i].replace("x", "")
+                if constantes[i] == cons:
+                    alerta = True
+                consexp.extend(cons.split("^"))
+                if consexp[0] == "":
+                    constantes[i] = "1"
+                else:
+                    constantes[i] = consexp[0]
+                if len(consexp) >= 2:
+                    exponentes.append(consexp[1])
+                else:
+                    if alerta:
+                        exponentes.append("0")
+                    else: 
+                        exponentes.append("1")
+            
+            cons = []
+            for i in range (0,len(constantes)):
+                cons.append(float(constantes[i]))
+
+            expo = []
+            for i in range (0,len(exponentes)):
+                expo.append(float(exponentes[i]))
+
+            return cons, expo
+
+        def ecuacion4to(binomio):
+            constantes = binomio[0]
+            exponentes = binomio[1]
+            # Paso 1 y 2, se agregan ecuaciones a la lista
+            binomios = []
+            binomiosNeg = []
+            for i in range(len(constantes)):
+                constante = constantes[i]
+                exX = exponentes[i]
+                exY = 0
+
+                
+                for k in range(int(exX+1)):
+                    ecuacion = []
+                    
+                    ecuacion.append(constante)
+                    ecuacion.append(exX)
+                    ecuacion.append(exY)
+
+                    binomios.append(ecuacion)
+                    if k == 0:
+                        binomiosNeg.append(ecuacion)
+
+                    constante = constante*exX/(exY+1)
+                    exX = exX-1
+                    exY = exY+1
+            
+            # Paso 2, restar binomios
+            for i in range(len(binomiosNeg)):
+                binomios.remove(binomiosNeg[i])
+
+            # Paso 3, divido h
+            for i in range(len(binomios)):
+                binomios[i][2] = binomios[i][2] - 1
+
+            # Paso 4, h = 0
+            i = 0
+            while i < len(binomios):
+                if binomios[i][2] != 0:
+                    binomios.pop(i)
+                    i = i - 1
+                i = i + 1
+
+
+            # Formato
+            formato = []
+            for i in range(len(binomios)):
+                if binomios[i][0] == 1:
+                    a = ""
+                elif binomios[i][0] > 0:
+                    a = "+"+str(int(binomios[i][0]))
+                else:
+                    a = str(int(binomios[i][0]))
+
+                if binomios[i][1] == 0:
+                    b = ""
+                elif binomios[i][1] == 1:
+                    b = "x"
+                else:
+                    b = "x^"+str(int(binomios[i][1]))
+
+                formato.append(a+b)
+                
+            yo = str(formato).replace(" ","").replace("[","").replace("]","").replace("'","").replace(","," ")
+            l_res = Label(f_derivadas, text=yo)
+            l_res.pack()
+        
+        ecuacion4to(strtoarray(ecu))
+
+    b_calcular = Button(f_derivadas, text="Calcular", command=lambda: cal_derivadas(ecu.get()))
+    b_calcular.pack()
 
 f_autor = LabelFrame(root, text="Autor = Costas Rueda Juan Pablo",padx=10,pady=10)
 f_autor1 = LabelFrame(root,text="Autor",padx=10,pady=10)
@@ -687,6 +816,9 @@ b_binomios.pack()
 
 b_pascal = Button(f_menu, text="Triangulo de Pascal", command=s_pascal)
 b_pascal.pack()
+
+b_binomios = Button(f_menu, text="Derivadas", command=s_derivadas)
+b_binomios.pack()
 
 b_autor = Button(f_menu, text="Autor", command=s_autor)
 b_autor.pack()
