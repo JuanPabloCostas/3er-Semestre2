@@ -1,5 +1,6 @@
-# Queue/Cola basado en listas de Python
-# Hacemos uso de las operaciones básicas de las listas
+# Costas Rueda Juan Pablo
+# Torres Hernández Andrés Guadalupe
+# Chavarría Villanueva Sebastian
 
 class Cola:
     # Crea una cola vacía

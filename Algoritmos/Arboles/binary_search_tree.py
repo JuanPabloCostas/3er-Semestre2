@@ -1,4 +1,8 @@
-# Binary Search Tree/Árbol de búsqueda binario
+
+# Costas Rueda Juan Pablo
+# Torres Hernández Andrés Guadalupe
+# Chavarría Villanueva Sebastian
+
 import cola as Q
 
 class BinarySearchTree:

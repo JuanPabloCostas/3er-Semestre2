@@ -1,3 +1,7 @@
+# Costas Rueda Juan Pablo
+# Torres Hernández Andrés Guadalupe
+# Chavarría Villanueva Sebastian
+
 import binary_search_tree as BST
 
 def testBinarySearchTree():
