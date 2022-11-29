@@ -2,7 +2,7 @@ import binary_search_tree as BST
 
 def testBinarySearchTree():
     bst = BST.BinarySearchTree()
-    data = [30, 50, 15, 25, 17, 27, 75, 7, 35]
+    data = [2,21,9,5,18,5,12,14,18,14,2,15,1,1,15,1,19,19,15]
     print("insert:", data)
     for d in data:
         bst.insert(d)
