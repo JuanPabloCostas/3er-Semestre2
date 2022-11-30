@@ -1,11 +1,13 @@
 
+import cmath
+
 def traductorX(x):
-    y = x**2
+    y = (15*(x)**4)**(1/2)
     return y
 
 limI = float(input("Ingresa el limite inferior> "))
 limF = float(input("Ingresa el limite superior> "))
-n = int(input("Ingresa el numero de vueltas> "))
+n = 1000
 h = (limF-limI)/n
 
 
