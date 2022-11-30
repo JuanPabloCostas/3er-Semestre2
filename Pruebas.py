@@ -1,8 +1,5 @@
+import math
 
+y = math.sin(math.radians(45))**2
 
-
-a = 8
-
-a = a ** (1/2)
-
-print(a)
+print(y)
