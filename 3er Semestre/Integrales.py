@@ -1,6 +1,4 @@
 
-import cmath
-
 def traductorX(x):
     y = (15*(x)**4)**(1/2)
     return y
