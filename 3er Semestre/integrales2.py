@@ -1,8 +1,11 @@
 # Integral con una ecuacion compleja sen(32)^3
 import math as m
 
+while done != True:
+    
+
 def traductorX(x):
-    y = m.sin(m.radians(9*(x)))**4
+    y = 2*x^3
     return y
 
 limI = int(input("Ingrese el Limite Inferior> "))

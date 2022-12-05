@@ -1,5 +1,7 @@
-import math
+import sympy as s
 
-y = math.sin(math.radians(45))**2
+x = s.symbols('x')
+eq1 = s.sympify("sen(45)")
+eq1 = eq1.replace(x,5)
 
-print(y)
+print(eq1) # 35
