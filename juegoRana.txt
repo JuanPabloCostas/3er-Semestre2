@@ -1,0 +1,22 @@
+espacios = ["izq","izq","izq","vac","der","der","der"]
+gameover = False
+def ranas(espacios):
+    while gameOver == Flase:
+        input = inputUsusario()
+        if(espacios[input] == "izq"):
+            if(espacios[input+1] == "vac"):
+                espacios[input] = "vac"
+                espacios[input+1] = "izq"
+
+            elif(espacios[input+1] == "der" and espacios[input+2] == "vac"):
+                espacios[input] = "vac"
+                espacios[input+2] = "izq"
+
+        if(espacios[input] == "der"):
+            if(espacios[input-1] == "vac"):
+                espacios[input] = "vac"
+                espacios[input-1] = "der"
+
+            elif(espacios[input-1] == "izq" and espacios[input-2] == "vac"):
+                espacios[input] = "vac"
+                espacios[input-2] = "der"
