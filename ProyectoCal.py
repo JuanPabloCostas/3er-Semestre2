@@ -1,6 +1,7 @@
 from cgitb import text
 from tkinter import *
 from PIL import ImageTk,Image
+import sympy as s
 import random
 
 
@@ -18,15 +19,18 @@ f_menu.grid(row=0,column=0,padx=50, pady=10)
 
 f_formula = LabelFrame(root, text="Formula General", padx=10, pady=10)
 def s_formula():
-    f_formula.grid_remove()
-    f_newton.grid_remove()
-    f_signos.grid_remove()
-    f_posibles.grid_remove()
-    f_sintetica.grid_remove()
-    f_binomios.grid_remove()
-    f_pascal.grid_remove()
-    f_autor.grid_remove()
-    f_autor1.grid_remove()
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
 
     f_formula.grid(row=0,column=1,padx=10,pady=10)
     l_res = Label(f_formula, text="Ingrese A, B, y C")
@@ -87,15 +91,18 @@ def s_formula():
 
 f_newton = LabelFrame(root, text="Newton Rapthson", padx=10, pady=10)
 def s_newton():
-    f_formula.grid_remove()
-    f_newton.grid_remove()
-    f_signos.grid_remove()
-    f_posibles.grid_remove()
-    f_sintetica.grid_remove()
-    f_binomios.grid_remove()
-    f_pascal.grid_remove()
-    f_autor.grid_remove()
-    f_autor1.grid_remove()
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
 
     f_newton.grid(row=0,column=1,padx=10,pady=10)
     l_res = Label(f_newton, text="Ingresa la ecuacion (2x^2-x+1)")
@@ -194,15 +201,18 @@ def s_newton():
 
 f_signos = LabelFrame(root, text="Ley de Signos", padx=10,pady=10)
 def s_signos():
-    f_formula.grid_remove()
-    f_newton.grid_remove()
-    f_signos.grid_remove()
-    f_posibles.grid_remove()
-    f_sintetica.grid_remove()
-    f_binomios.grid_remove()
-    f_pascal.grid_remove()
-    f_autor.grid_remove()
-    f_autor1.grid_remove()
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
 
     f_signos.grid(row=0,column=1,padx=10,pady=10)
 
@@ -326,15 +336,18 @@ def s_signos():
 
 f_posibles = LabelFrame(root, text="Posibles Raices",padx=10,pady=10)
 def s_posibes():
-    f_formula.grid_remove()
-    f_newton.grid_remove()
-    f_signos.grid_remove()
-    f_posibles.grid_remove()
-    f_sintetica.grid_remove()
-    f_binomios.grid_remove()
-    f_pascal.grid_remove()
-    f_autor.grid_remove()
-    f_autor1.grid_remove()
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
 
     f_posibles.grid(row=0,column=1,padx=10,pady=10)
 
@@ -411,15 +424,18 @@ def s_posibes():
 
 f_sintetica = LabelFrame(root, text="Division Sintetica",padx=10,pady=10)
 def s_sintetica():
-    f_formula.grid_remove()
-    f_newton.grid_remove()
-    f_signos.grid_remove()
-    f_posibles.grid_remove()
-    f_sintetica.grid_remove()
-    f_binomios.grid_remove()
-    f_pascal.grid_remove()
-    f_autor.grid_remove()
-    f_autor1.grid_remove()
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
 
     f_sintetica.grid(row=0,column=1,padx=10,pady=10)
     l_res = Label(f_sintetica, text="Ingresa la ecuacion (2x^2-x+1)")
@@ -497,15 +513,18 @@ def s_sintetica():
 
 f_binomios = LabelFrame(root, text="Binomios de Newton", padx=10,pady=10)
 def s_binomios():
-    f_formula.grid_remove()
-    f_newton.grid_remove()
-    f_signos.grid_remove()
-    f_posibles.grid_remove()
-    f_sintetica.grid_remove()
-    f_binomios.grid_remove()
-    f_pascal.grid_remove()
-    f_autor.grid_remove()
-    f_autor1.grid_remove()
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
 
     f_binomios.grid(row=0, column=1, padx=10,pady=10)
     l_res = Label(f_binomios, text="Ingresa el exponente en Entero")
@@ -559,15 +578,18 @@ def s_binomios():
 
 f_pascal = LabelFrame(root, text="Triangulo de Pascal", padx=10,pady=10)
 def s_pascal():
-    f_formula.grid_remove()
-    f_newton.grid_remove()
-    f_signos.grid_remove()
-    f_posibles.grid_remove()
-    f_sintetica.grid_remove()
-    f_binomios.grid_remove()
-    f_pascal.grid_remove()
-    f_autor.grid_remove()
-    f_autor1.grid_remove()
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
 
     f_pascal.grid(row=0,column=1,padx=10,pady=10)
     l_res = Label(f_pascal, text="Ingresa el exponente en Entero")
@@ -615,15 +637,18 @@ def s_pascal():
 
 f_derivadas = LabelFrame(root, text="Derivadas", padx=10,pady=10)
 def s_derivadas():
-    f_formula.grid_remove()
-    f_newton.grid_remove()
-    f_signos.grid_remove()
-    f_posibles.grid_remove()
-    f_sintetica.grid_remove()
-    f_binomios.grid_remove()
-    f_pascal.grid_remove()
-    f_autor.grid_remove()
-    f_autor1.grid_remove()
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
 
     f_derivadas.grid(row=0,column=1,padx=10,pady=10)
     l_res = Label(f_derivadas, text="Ingresa la ecuacion (2x^2-x+1)")
@@ -743,6 +768,206 @@ def s_derivadas():
     b_calcular = Button(f_derivadas, text="Calcular", command=lambda: cal_derivadas(ecu.get()))
     b_calcular.pack()
 
+f_limites = LabelFrame(root, text="Limites", padx=10, pady=10)
+def s_limites():
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
+
+    f_limites.grid(row=0,column=1,padx=10,pady=10)
+    l_res = Label(f_limites,text="Ingresa la ecuacion 1 (2*x**2 +5)> ")
+    l_res.pack()
+    ecu = Entry(f_limites,width=15)
+    ecu.pack()
+    l_res2 = Label(f_limites,text="Ingresa la ecuacion 2 (2*x**2 +5)> ")
+    l_res2.pack()
+    ecu1 = Entry(f_limites,width=15)
+    ecu1.pack()
+
+    def cal_limites(ecu,ecu1):
+        l_res = Label(f_limites, text="Limite de "+ ecu +" y "+ecu1)
+        l_res.pack()
+        x = s.symbols('x')
+        part1 = s.sympify(ecu)
+        part2 = s.sympify(ecu1)
+        part2 = -(part2)
+        final = str(part1)+str(part2)
+        alt = final
+        # str = input("ingrese> ")
+        
+
+        alt = alt.replace("+", "@")
+        alt = alt.replace("-", "@-")
+        alt = alt.replace("**", "^")
+        alt = alt.replace("*", "")
+        alt = alt.replace(" ", "")
+
+        constantes = []
+        constantes.extend(alt.split("@"))
+
+        exponentes = []
+
+        for i in range (0, len(constantes)):
+            consexp = []
+            alerta = False
+            cons = constantes[i].replace("x", "")
+            if constantes[i] == cons:
+                alerta = True
+            consexp.extend(cons.split("^"))
+            if consexp[0] == "":
+                constantes[i] = "1"
+            else:
+                constantes[i] = consexp[0]
+            if len(consexp) >= 2:
+                exponentes.append(consexp[1])
+            else:
+                if alerta:
+                    exponentes.append("0")
+                else: 
+                    exponentes.append("1")
+            
+        inputs = []
+        for i in range (0,len(constantes)):
+            inputs.append(float(constantes[i]))
+
+        integers = []
+        for i in range (0,len(exponentes)):
+            integers.append(float(exponentes[i]))
+
+        derivadas = []
+        for i in range (0,(len(integers))):
+            derivadas.append(inputs[i]*integers[i])
+
+
+
+        # float("Constantes: ",constantes)
+
+        x = 0
+        fx = 0
+        fxd = 0
+
+
+        raices = []
+
+        while len(raices) < 2:
+            x = random.uniform(-50,50)
+            i = 1
+            raiz = None
+            oldx = x
+            fx = 0
+            fxd = 0
+            while i > 0:
+                for i in range (0,len(inputs)):
+                    if integers[i] == 0:
+                        fx = fx + inputs[i]
+                    else:
+                        fx = fx + inputs[i]*x**integers[i]
+                # fx = inputs[0]*x**8 + inputs[1]*x**7 + inputs[2]*x**6 + inputs[3]*x**5 + inputs[4]*x**4 + inputs[5]*x**3 + inputs[6]*x**2 + inputs[7]*x**1 + inputs[8]
+                for i in range (0,(len(derivadas))):
+                    if (integers[i]-1) == 0:
+                        fxd = fxd + derivadas[i]
+                    else:
+                        fxd = fxd + derivadas[i]*x**(integers[i]-1)
+                        
+                # fxd = derivadas[0]*(x**7) + derivadas[1]*(x**6) + derivadas[2]*(x**5) + derivadas[3]*(x**4) + derivadas[4]*(x**3) + derivadas[5]*(x**2) + derivadas[6]*(x**1) + derivadas[7]
+                x = x - fx/fxd
+                fx = 0
+                fxd = 0
+                # print("x=",x)
+                # print("fx=",fx)
+                # print("fxd=",fxd)
+                if (oldx - x) < 0.0000001 and (oldx - x) > -0.0000001 :
+                    i = 0
+                    raiz = x
+                oldx = x
+            stop = False
+            for k in range(0,len(raices)):
+                if (raices[k] - raiz) < 0.001 and (raiz - raices[k]) < 0.001:
+                    stop = True
+                    break
+            if stop == False:
+                raices.append(raiz)
+                l_res = Label(f_limites, text=str(raiz))
+                l_res.pack()
+    
+    b_calcular = Button(f_limites, text="Calcular", command=lambda: cal_limites(ecu.get(),ecu1.get()))
+    b_calcular.pack()
+
+f_areas = LabelFrame(root, text="Areas", padx=10,pady=10)
+def s_areas():
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
+    
+
+    f_areas.grid(row=0,column=1,padx=10,pady=10)
+    l_res = Label(f_areas,text="Ingresa la ecuacion (2*x**2 +5)> ")
+    l_res.pack()
+    ecu = Entry(f_areas,width=15)
+    ecu.pack()
+    l_res2 = Label(f_areas,text="Ingresa el limite inferior (1)> ")
+    l_res2.pack()
+    limi = Entry(f_areas,width=15)
+    limi.pack()
+    l_res3 = Label(f_areas,text="Ingresa el limite superior (2)> ")
+    l_res3.pack()
+    lims = Entry(f_areas,width=15)
+    lims.pack()
+    
+    def cal_area(ecu,limi,lims):
+        l_res = Label(f_areas, text=ecu+" | "+"LI"+" | "+"LS"+" | "+"Area")
+        l_res.pack()
+        def traductorX(x,ecuacion):
+    
+            ecuacion = s.sympify(ecuacion.replace("x",str(x)))
+            y = float(ecuacion)
+            return y
+
+        ecuacion = ecu
+        limI = float(limi)
+        limF = float(lims)
+        n = 300
+        h = (limF-limI)/n
+
+
+
+        Al = 0
+        xi= limI
+        xf= xi + h
+        yi= traductorX(xi,ecuacion)
+        yf= traductorX(xf,ecuacion)
+        Al += (yf+yi)/2*h
+        for i in range(n-1):
+            xi += h
+            xf += h
+            yi= traductorX(xi,ecuacion)
+            yf= traductorX(xf,ecuacion)
+            Al += (yf+yi)/2*h
+
+        l_res = Label(f_areas, text=ecu+" | "+str(limI)+" | "+str(limF)+" | "+str(Al))
+        l_res.pack()
+    
+    b_calcular = Button(f_areas, text="Calcular", command=lambda: cal_area(ecu.get(),limi.get(),lims.get()))
+    b_calcular.pack()
+    
 f_autor = LabelFrame(root, text="Autor = Costas Rueda Juan Pablo",padx=10,pady=10)
 f_autor1 = LabelFrame(root,text="Autor",padx=10,pady=10)
 def s_autor():
@@ -819,6 +1044,12 @@ b_pascal.pack()
 
 b_binomios = Button(f_menu, text="Derivadas", command=s_derivadas)
 b_binomios.pack()
+
+b_limites = Button(f_menu, text="Limites", command=s_limites)
+b_limites.pack()
+
+b_areas = Button(f_menu,text="Areas", command=s_areas)
+b_areas.pack()
 
 b_autor = Button(f_menu, text="Autor", command=s_autor)
 b_autor.pack()

@@ -1,16 +1,24 @@
 import os
 import random
+import sympy as s
 os.system('cls||clear')
 
 
-import re
 
-str = "8x^3+2x^2-3x-1"
+x = s.symbols('x')
+part1 = s.sympify("2*x + 5")
+part2 = s.sympify("3*x**2 + 2*x")
+part2 = -(part2)
+final = str(part1)+str(part2)
+str = final
 # str = input("ingrese> ")
 alt = str
 
 alt = alt.replace("+", "@")
 alt = alt.replace("-", "@-")
+alt = alt.replace("**", "^")
+alt = alt.replace("*", "")
+alt = alt.replace(" ", "")
 
 constantes = []
 constantes.extend(alt.split("@"))
@@ -48,9 +56,7 @@ derivadas = []
 for i in range (0,(len(integers))):
     derivadas.append(inputs[i]*integers[i])
 
-print("Contantes: ",inputs)
-print("Exponentes: ", integers)
-print("Derivadas: ",derivadas)
+
 
 # float("Constantes: ",constantes)
 
@@ -61,7 +67,7 @@ fxd = 0
 
 raices = []
 
-while len(raices) < 15:
+while len(raices) < 2:
     x = random.uniform(-50,50)
     i = 1
     raiz = None
