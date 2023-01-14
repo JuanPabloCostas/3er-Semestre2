@@ -9,7 +9,7 @@ class Graph():
 					for row in range(vertices)]
 
 	def printSolution(self, dist):
-		print("Vertex \t Distance from Source")
+		print("Vertice \t Distancia desde la fuente")
 		for node in range(self.V):
 			print(node, "\t\t", dist[node])
 
@@ -65,15 +65,15 @@ class Graph():
 # Driver program
 g = Graph(9)
 g.graph = [
-        [0, 4, 0, 0, 0, 0, 0, 8, 0],
-		[4, 0, 8, 0, 0, 0, 0, 11, 0],
-		[0, 8, 0, 7, 0, 4, 0, 0, 2],
-		[0, 0, 7, 0, 9, 14, 0, 0, 0],
-		[0, 0, 0, 9, 0, 10, 0, 0, 0],
-		[0, 0, 4, 14, 10, 0, 2, 0, 0],
-		[0, 0, 0, 0, 0, 2, 0, 1, 6],
-		[8, 11, 0, 0, 0, 0, 1, 0, 7],
-		[0, 0, 2, 0, 0, 0, 6, 7, 0]
+        [0, 2, 0, 3, 3, 0, 0, 8, 0],
+		[2, 0, 2, 0, 3, 3, 0, 0, 0],
+		[0, 2, 0, 0, 0, 3, 0, 0, 0],
+		[3, 0, 0, 0, 2, 0, 3, 5, 0],
+		[3, 3, 0, 2, 0, 2, 0, 1, 4],
+		[0, 3, 3, 0, 2, 0, 0, 0, 3],
+		[0, 0, 0, 3, 0, 0, 0, 3, 0],
+		[0, 0, 0, 5, 1, 0, 3, 0, 3],
+		[0, 0, 0, 0, 4, 3, 0, 3, 0],
 		]
 
 g.dijkstra(0)
