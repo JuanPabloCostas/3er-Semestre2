@@ -3,6 +3,9 @@ from tkinter import *
 from PIL import ImageTk,Image
 import sympy as s
 import random
+import datetime as date
+import numpy as np
+import sys
 
 
 root = Tk()
@@ -967,7 +970,357 @@ def s_areas():
     
     b_calcular = Button(f_areas, text="Calcular", command=lambda: cal_area(ecu.get(),limi.get(),lims.get()))
     b_calcular.pack()
+
+f_balance = LabelFrame(root, text="Balance", padx=10,pady=10)
+def s_balance():
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
     
+
+    f_balance.grid(row=0,column=1,padx=10,pady=10)
+
+    l_ecu1 = Label(f_balance,text="Ingresa la primera ecuacion (2x**2+5)> ")
+    l_ecu1.pack()
+
+    ecu1 = Entry(f_balance,width=15)
+    ecu1.pack()
+
+    l_ecu2 = Label(f_balance,text="Ingresa la segunda ecuacion (2x**2+5)> ")
+    l_ecu2.pack()
+
+    ecu2 = Entry(f_balance,width=15)
+    ecu2.pack()
+
+    def cal_balance(ecu1,ecu2):
+        class ecuacion:
+            def __init__(self, constante, exponente):
+                self.constante = constante
+                self.exponente = exponente
+
+        def intify(subject):
+            if subject == "":
+                return 1
+            elif subject == "-":
+                return -1
+            elif "/" in subject:
+                aux = []
+                aux.extend(subject.split("/"))
+                return float(aux[0]) / float(aux[1])
+            else:
+                return float(subject)
+
+        def integrar(conjunto):
+            for i in range(len(conjunto)):
+                conjunto[i].exponente += 1
+                conjunto[i].constante = conjunto[i].constante / conjunto[i].exponente
+            return conjunto
+
+        def sumar(conjunto,superior,inferior):
+            aux1 = 0
+            for i in range(len(conjunto)):
+                aux1 = aux1 + resolver(conjunto[i],superior)
+            aux2 = 0
+            for i in range(len(conjunto)):
+                aux2 = aux2 + resolver(conjunto[i],inferior)
+            return aux1 - aux2
+
+        def resolver(ecuacion,x):
+            return ecuacion.constante * x ** ecuacion.exponente
+
+        def aObjeto(imput):
+            imput = imput.replace(" ","").replace("+","@").replace("-","@-")
+
+            lista = []
+            lista.extend(imput.split("@"))
+
+            conjunto = []
+
+            for i in range(len(lista)):
+                if "x**" in lista[i]:
+                    aux = lista[i].split("x**")
+                    ecuacionCreada = ecuacion(intify(aux[0]),intify(aux[1]))
+                    conjunto.append(ecuacionCreada)
+
+                elif "x" in lista[i]:
+                    aux = lista[i].split("x")
+                    ecuacionCreada = ecuacion(intify(aux[0]),1)
+                    conjunto.append(ecuacionCreada)
+
+                else:
+                    ecuacionCreada = ecuacion(intify(lista[i]),0)
+                    conjunto.append(ecuacionCreada)
+            
+            return conjunto
+
+        def igualar(conjuntoA,conjuntoB):
+            auxA = []
+            auxB = []
+            for i in range(len(conjuntoA)):
+                auxA.append(ecuacion(conjuntoA[i].constante,conjuntoA[i].exponente))
+            for i in range(len(conjuntoB)):
+                auxB.append(ecuacion(conjuntoB[i].constante,conjuntoB[i].exponente))
+            for i in range(len(auxB)):
+                auxB[i].constante = auxB[i].constante * -1
+            conjuntoIgualado = []
+            conjuntoIgualado.extend(auxA+auxB)
+            return conjuntoIgualado
+
+        def sacarRaiz(conjunto):
+
+            inputs = []
+            for i in range (0,len(conjunto)):
+                inputs.append(float(conjunto[i].constante))
+
+            integers = []
+            for i in range (0,len(conjunto)):
+                integers.append(float(conjunto[i].exponente))
+
+            derivadas = []
+            for i in range (0,(len(integers))):
+                derivadas.append(inputs[i]*integers[i])
+
+            x = 0
+            fx = 0
+            fxd = 0
+
+            raices = []
+            alto = False
+            loops = 0
+            while len(raices) < 5 and alto == False:
+                
+                x = random.uniform(-50,50)
+                i = 1
+                raiz = None
+                oldx = x
+                fx = 0
+                fxd = 0
+                while i > 0:
+                    for i in range (0,len(inputs)):
+                        if integers[i] == 0:
+                            fx = fx + inputs[i]
+                        else:
+                            fx = fx + inputs[i]*x**integers[i]
+                    
+                        if (integers[i]-1) == 0:
+                            fxd = fxd + derivadas[i]
+                        else:
+                            fxd = fxd + derivadas[i]*x**(integers[i]-1)
+                    x = x - fx/fxd
+                    fx = 0
+                    fxd = 0
+                    if (oldx - x) < 0.0000001 and (oldx - x) > -0.0000001 :
+                        i = 0
+                        raiz = x
+                    oldx = x
+                loops += 1
+                if loops > 1000:
+                    alto = True
+                stop = False
+                for k in range(0,len(raices)):
+                    if (raices[k] - raiz) < 0.001 and (raiz - raices[k]) < 0.001:
+                        stop = True
+                        break
+                if stop == False:
+                    raices.append(raiz)
+                
+            return max(raices)
+
+
+        a = ecu1
+        b = ecu2
+
+        a = aObjeto(a)
+        b = aObjeto(b)
+
+
+        superior = sacarRaiz(igualar(a,b))
+        inferior = 0
+
+
+
+        a = integrar(a)
+        b = integrar(b)
+
+
+
+        resultado = []
+
+
+        resultado.append(sumar(a,superior,inferior))
+        resultado.append(sumar(b,superior,inferior))
+
+        resultado = max(resultado)-min(resultado)
+        print("Punto de equilibrio", superior)
+
+        print("Monto de retornar", resultado)
+
+        print("Punto de retorno", sacarRaiz(igualar(a,b)))
+
+        
+        l_res = Label(f_balance, text="Punto de equilibrio: " + str(round(superior,4)))
+        l_res.pack()
+
+        l_res = Label(f_balance, text="Monto de retorno: " + str(round(resultado,4)))
+        l_res.pack()
+
+        l_res = Label(f_balance, text="Punto de retorno: " + str(round(sacarRaiz(igualar(a,b)),4)))
+        l_res.pack()
+
+        
+    
+    b_calcular = Button(f_balance, text="Calcular", command=lambda: cal_balance(ecu1.get(),ecu2.get()))
+    b_calcular.pack()
+
+f_rectas = LabelFrame(root, text="Rectas", padx=10,pady=10)
+def s_rectas():
+    f_formula.grid_forget()
+    f_newton.grid_forget()
+    f_signos.grid_forget()
+    f_posibles.grid_forget()
+    f_sintetica.grid_forget()
+    f_binomios.grid_forget()
+    f_pascal.grid_forget()
+    f_derivadas.grid_forget()
+    f_limites.grid_forget()
+    f_areas.grid_forget()
+    f_autor.grid_forget()
+    f_autor1.grid_forget()
+    
+
+    f_rectas.grid(row=0,column=1,padx=10,pady=10)
+    l_mes = Label(f_rectas,text="Ingrese el mes en digitos (1-12)> ")
+    l_mes.pack()
+
+    mes = Entry(f_rectas,width=15)
+    mes.pack()
+
+    l_dia = Label(f_rectas,text="Ingrese el dia en digitos (1-31)> ")
+    l_dia.pack()
+
+    dia = Entry(f_rectas,width=15)
+    dia.pack()
+
+    l_valor = Label(f_rectas,text="Ingrese el valor> ")
+    l_valor.pack()
+
+    valor = Entry(f_rectas,width=15)
+    valor.pack()
+
+
+    def calcular_recta(registros):
+        def isPos(valor):
+            if valor >= 0:
+                return "+"
+            else:
+                return ""
+
+        n = len(registros)
+
+        x = 0
+
+        yacumTemporal = 0
+        yacum = 0
+
+        xy = 0
+
+        x2y = 0
+
+        x2 = 0
+        x3 = 0
+        x4 = 0
+        x5 = 0
+        for i in range(n):
+            x += registros[i].x
+
+            yacumTemporal += registros[i].y
+            yacum += yacumTemporal
+
+            xy += registros[i].x * yacumTemporal
+
+            x2y += registros[i].x ** 2 * yacumTemporal
+
+            x2 += registros[i].x ** 2
+            x3 += registros[i].x ** 3
+            x4 += registros[i].x ** 4
+
+
+
+        # Reading number of unknowns
+        nt = 3
+
+        # Making numpy array of n x n+1 size and initializing 
+        # to zero for storing augmented matrix
+        a = np.zeros((nt,nt+1))
+        # Making numpy array of n size and initializing 
+        # to zero for storing solution vector
+        xt = np.zeros(nt)
+        # Reading augmented matrix coefficients
+        a[0][0] = n
+        a[0][1] = x
+        a[0][2] = x2
+        a[0][3] = yacum
+        a[1][0] = x
+        a[1][1] = x2
+        a[1][2] = x3
+        a[1][3] = xy
+        a[2][0] = x2
+        a[2][1] = x3
+        a[2][2] = x4
+        a[2][3] = x2y
+
+        # Applying Gauss Jordan Elimination
+        for i in range(nt):
+            if a[i][i] == 0.0:
+                print(i)
+                sys.exit('Divide by zero detected!')
+                
+            for j in range(nt):
+                if i != j:
+                    ratio = a[j][i]/a[i][i]
+
+                    for k in range(nt+1):
+                        a[j][k] = a[j][k] - ratio * a[i][k]
+
+        # Obtaining Solution
+
+        for i in range(nt):
+            xt[i] = a[i][nt]/a[i][i]
+
+        l_res = Label(f_rectas, text="Ecuacion")
+        l_res.pack()
+
+        l_res = Label(f_rectas, text=str(round(xt[2],3))+"x**2"+isPos(xt[1])+str(round(xt[1],3))+"x"+isPos(xt[1])+str(round(xt[0],3)))
+        l_res.pack()
+
+        
+        
+    
+    class registro:
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+
+    def addRegistro(month, day, y):
+        x = int(date.date(int(date.date.today().strftime("%Y")),month,day).strftime("%j"))
+        return registro(x, y)
+    
+    registros = []
+    b_anandir = Button(f_rectas, text="Añadir", command=lambda: registros.append(addRegistro(int(mes.get()),int(dia.get()),float(valor.get()))))
+    b_anandir.pack()
+
+    b_calcular = Button(f_rectas, text="Calcular", command=lambda: calcular_recta(registros))
+    b_calcular.pack()
+
 f_autor = LabelFrame(root, text="Autor = Costas Rueda Juan Pablo",padx=10,pady=10)
 f_autor1 = LabelFrame(root,text="Autor",padx=10,pady=10)
 def s_autor():
@@ -1050,6 +1403,12 @@ b_limites.pack()
 
 b_areas = Button(f_menu,text="Areas", command=s_areas)
 b_areas.pack()
+
+b_balance = Button(f_menu,text="Balance", command=s_balance)
+b_balance.pack()
+
+b_rectas = Button(f_menu,text="Curvas", command=s_rectas)
+b_rectas.pack()
 
 b_autor = Button(f_menu, text="Autor", command=s_autor)
 b_autor.pack()
