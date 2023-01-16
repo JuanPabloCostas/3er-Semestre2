@@ -15,32 +15,120 @@ root.title('Proyecto Final Calculo')
 #--------------------------
 #MENU
 #--------------------------
-f_menu = LabelFrame(root,padx=20,pady=20)
+f_menu = LabelFrame(root, text="Menu de Operaciones",padx=20,pady=20)
 f_menu.grid(row=0,column=0,padx=50, pady=10)
 
 
+f_side = LabelFrame(root, text="Operaciones")
+f_side.grid(row=0,column=1)
 
-f_formula = LabelFrame(root, text="Formula General", padx=10, pady=10)
+
+    
+    
+
+def ej_gauss():
+    
+    new_window = Toplevel(root)
+    new_window.title("Gauss-Jordan")
+    new_window.geometry("550x350")
+
+    
+    def calcular_gauss(matiz, xs):
+
+        def gauss_jordan(A, b):
+            n = len(b)
+            # Concatenar la matriz A con el vector b
+            Ab = np.concatenate((A, b.reshape(n, 1)), axis=1)
+            for i in range(n):
+                # Seleccionar el elemento pivot
+                pivot = Ab[i][i]
+                # Dividir la fila del pivote por el elemento pivot
+                Ab[i] = Ab[i] / pivot
+                for j in range(n):
+                    if i != j:
+                        # Restar la fila del pivote con la fila a eliminar el elemento
+                        Ab[j] = Ab[j] - Ab[j][i] * Ab[i]
+            # Separar la matriz A inversa de la matriz b
+            x = Ab[:, n]
+            return x
+
+        # Ejemplo de uso
+        A = np.array(matiz)
+        b = np.array(xs)
+        x = gauss_jordan(A, b)
+        label0 = Label(new_window,padx=5,pady=5, text="x = " + str(x[0]))
+        label1 = Label(new_window,padx=5,pady=5, text="y = " + str(x[1]))
+        label2 = Label(new_window,padx=5,pady=5, text="z = " + str(x[2]))
+
+        label0.grid(row=2,column=1)
+        label1.grid(row=3,column=1)
+        label2.grid(row=4,column=1)
+
+    label = Label(new_window, text="Ingrese el sistema de ecuaciones",pady=10)
+    label.grid(row=0,column=0)
+    
+    f_gridd = LabelFrame(new_window,padx=5,pady=5)
+    f_gridd.grid(row=1,column=0)
+    entry00 = Entry(f_gridd, width=15)
+    entry01 = Entry(f_gridd, width=15)
+    entry02 = Entry(f_gridd, width=15)
+    entry03 = Entry(f_gridd, width=15)
+
+    entry10 = Entry(f_gridd, width=15)
+    entry11 = Entry(f_gridd, width=15)
+    entry12 = Entry(f_gridd, width=15)
+    entry13 = Entry(f_gridd, width=15)
+
+    entry20 = Entry(f_gridd, width=15)
+    entry21 = Entry(f_gridd, width=15)
+    entry22 = Entry(f_gridd, width=15)
+    entry23 = Entry(f_gridd, width=15)
+
+    entry00.grid(row=0,column=0)
+    entry01.grid(row=0,column=1)
+    entry02.grid(row=0,column=2)
+    entry03.grid(row=0,column=3)
+
+    entry10.grid(row=1,column=0)
+    entry11.grid(row=1,column=1)
+    entry12.grid(row=1,column=2)
+    entry13.grid(row=1,column=3)
+
+    entry20.grid(row=2,column=0)
+    entry21.grid(row=2,column=1)
+    entry22.grid(row=2,column=2)
+    entry23.grid(row=2,column=3)
+
+    def sacardatos():
+        A = [[float(entry00.get()),float(entry01.get()),float(entry02.get())],
+        [float(entry10.get()),float(entry11.get()),float(entry12.get())],
+        [float(entry20.get()),float(entry21.get()),float(entry22.get())]]
+
+        b = [float(entry03.get()),float(entry13.get()),float(entry23.get())]
+
+        yi = [A,b]
+        return yi
+
+    calcular = Button(new_window,padx=5,pady=5, text="Calcular", command=lambda: calcular_gauss(sacardatos()[0],sacardatos()[1]))
+    calcular.grid(row=1,column=1,padx=5,pady=5,)
+
+    new_button = Button(new_window, text="Salir", command=new_window.destroy)
+    
+
+
+
+
 def s_formula():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
+    
+    new_window = Toplevel(root)
+    new_window.title("Formula General")
+    new_window.geometry("550x350")
 
-    f_formula.grid(row=0,column=1,padx=10,pady=10)
-    l_res = Label(f_formula, text="Ingrese A, B, y C")
+    l_res = Label(new_window, text="Ingrese A, B, y C")
     l_res.pack()
-    a = Entry(f_formula, width=15)
-    b = Entry(f_formula, width=15)
-    c = Entry(f_formula, width=15)
+    a = Entry(new_window, width=15)
+    b = Entry(new_window, width=15)
+    c = Entry(new_window, width=15)
     a.pack()
     b.pack()
     c.pack()
@@ -70,9 +158,9 @@ def s_formula():
             x1 = (part1 + part2)/part3
             x2 = (part1 - part2)/part3
 
-            l_x1 = Label(f_formula, text="X1 = " + str(x1))
+            l_x1 = Label(new_window, text="X1 = " + str(x1))
             l_x1.pack()    
-            l_x2 = Label(f_formula, text="X2 = " + str(x2))
+            l_x2 = Label(new_window, text="X2 = " + str(x2))
             l_x2.pack()  
             # print("X1 = ", x1)
             # print("X2 = ", x2)
@@ -80,37 +168,26 @@ def s_formula():
         else:
             part2 = (part2*-1)**(1/2)
 
-            l_x1 = Label(f_formula, text="X1 = " + str(part1/part3) + " + " + str(part2/part3) + "i")
+            l_x1 = Label(new_window, text="X1 = " + str(part1/part3) + " + " + str(part2/part3) + "i")
             l_x1.pack()    
-            l_x2 = Label(f_formula, text="X1 = " + str(part1/part3) + " - " + str(part2/part3) + "i")
+            l_x2 = Label(new_window, text="X2 = " + str(part1/part3) + " - " + str(part2/part3) + "i")
             l_x2.pack() 
             # print("X1 = ", (part1/part3), " + ", part2/part3, "i")
             # print("X2 = ", (part1/part3), " - ", part2/part3, "i") 
 
 
 
-    b_calcular = Button(f_formula, text="Calcular", command=lambda: calular_formula(a.get(),b.get(),c.get()))
+    b_calcular = Button(new_window, text="Calcular", command=lambda: calular_formula(a.get(),b.get(),c.get()))
     b_calcular.pack()
 
-f_newton = LabelFrame(root, text="Newton Rapthson", padx=10, pady=10)
-def s_newton():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
 
-    f_newton.grid(row=0,column=1,padx=10,pady=10)
-    l_res = Label(f_newton, text="Ingresa la ecuacion (2x^2-x+1)")
+def s_newton():
+    new_window = Toplevel(root)
+    new_window.title("Newton Rapson")
+    new_window.geometry("550x350")
+    l_res = Label(new_window, text="Ingresa la ecuacion (2x^2-x+1)")
     l_res.pack()
-    alt = Entry(f_newton, width=35)
+    alt = Entry(new_window, width=35)
     alt.pack()
 
     def cal_newton(alt):
@@ -196,33 +273,22 @@ def s_newton():
                     break
             if stop == False:
                 raices.append(raiz)
-                l_raiz = Label(f_newton, text=("Raiz" , len(raices) , "= " , raiz))
+                l_raiz = Label(new_window, text=("Raiz" , len(raices) , "= " , raiz))
                 l_raiz.pack()
     
-    b_cal_newton = Button(f_newton, text="Calcular", command=lambda: cal_newton(alt.get()))
+    b_cal_newton = Button(new_window, text="Calcular", command=lambda: cal_newton(alt.get()))
     b_cal_newton.pack()
 
-f_signos = LabelFrame(root, text="Ley de Signos", padx=10,pady=10)
+
 def s_signos():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
+    new_window = Toplevel(root)
+    new_window.title("Ley de Signos")
+    new_window.geometry("350x350")
 
-    f_signos.grid(row=0,column=1,padx=10,pady=10)
-
-    l_res = Label(f_signos, text="Ingresa la ecuacion (2x^2-x+1)")
+    l_res = Label(new_window, text="Ingresa la ecuacion (2x^2-x+1)")
     l_res.pack()
 
-    alt = Entry(f_signos, width=35)
+    alt = Entry(new_window, width=35)
     alt.pack()
 
     def cal_signos(alt):
@@ -312,7 +378,7 @@ def s_signos():
             listado.append(k)
             listado.append(img-(i+k))
             # print(listado)
-            l_list = Label(f_signos, text=str(listado))
+            l_list = Label(new_window, text=str(listado))
             l_list.pack()
             listado.clear()
             if(i == 0 or i == 1):
@@ -328,35 +394,23 @@ def s_signos():
             listado.append(i)
             listado.append(k)
             listado.append(img-(i+k))
-            l_list = Label(f_signos, text=str(listado))
+            l_list = Label(new_window, text=str(listado))
             l_list.pack()
             listado.clear()
 
 
 
-    b_signos = Button(f_signos, text="Calcular", command=lambda: cal_signos(alt.get()))
+    b_signos = Button(new_window, text="Calcular", command=lambda: cal_signos(alt.get()))
     b_signos.pack()
 
-f_posibles = LabelFrame(root, text="Posibles Raices",padx=10,pady=10)
+
 def s_posibes():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
-
-    f_posibles.grid(row=0,column=1,padx=10,pady=10)
-
-    l_res = Label(f_posibles, text="Ingresa la ecuacion (2x^2-x+1)")
+    new_window = Toplevel(root)
+    new_window.title("Pisibles Raices")
+    new_window.geometry("350x350")
+    l_res = Label(new_window, text="Ingresa la ecuacion (2x^2-x+1)")
     l_res.pack()
-    alt = Entry(f_posibles, width=35)
+    alt = Entry(new_window, width=35)
     alt.pack()
 
     def cal_posibles(alt):
@@ -416,39 +470,27 @@ def s_posibes():
         
         for i in range(0,len(denominadores)):
             for k in range(0,len(numeradores)):
-                l_raices = Label(f_posibles, text=str(numeradores[k]) + "/" + str(denominadores[i]))
+                l_raices = Label(new_window, text=str(numeradores[k]) + "/" + str(denominadores[i]))
                 l_raices.pack()
                 # print(numeradores[k],"/",denominadores[i])
-            l_space = Label(f_posibles, text="")
+            l_space = Label(new_window, text="")
             l_space.pack()
 
-    b_calcular = Button(f_posibles,text="Calcular", command=lambda: cal_posibles(alt.get()))
+    b_calcular = Button(new_window,text="Calcular", command=lambda: cal_posibles(alt.get()))
     b_calcular.pack()
 
-f_sintetica = LabelFrame(root, text="Division Sintetica",padx=10,pady=10)
 def s_sintetica():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
-
-    f_sintetica.grid(row=0,column=1,padx=10,pady=10)
-    l_res = Label(f_sintetica, text="Ingresa la ecuacion (2x^2-x+1)")
+    new_window = Toplevel(root)
+    new_window.title("Divicion Sintetica")
+    new_window.geometry("350x350")
+    l_res = Label(new_window, text="Ingresa la ecuacion (2x^2-x+1)")
     l_res.pack()
-    alt = Entry(f_sintetica, width=35)
+    alt = Entry(new_window, width=35)
     alt.pack()
 
-    l_res = Label(f_sintetica, text="Ingresa el exponente en Entero")
+    l_res = Label(new_window, text="Ingresa el exponente en Entero")
     l_res.pack()
-    pos = Entry(f_sintetica, width=35)
+    pos = Entry(new_window, width=35)
     pos.pack()
 
     def cal_sintetica(alt,pos):
@@ -508,31 +550,19 @@ def s_sintetica():
         else:
             es = " no es una raiz"
         
-        l_res = Label(f_sintetica, text=str(pos) + es)
+        l_res = Label(new_window, text=str(pos) + es)
         l_res.pack()
 
-    b_calcular = Button(f_sintetica, text="Calcular", command=lambda: cal_sintetica(alt.get(),pos.get()))
+    b_calcular = Button(new_window, text="Calcular", command=lambda: cal_sintetica(alt.get(),pos.get()))
     b_calcular.pack()
 
-f_binomios = LabelFrame(root, text="Binomios de Newton", padx=10,pady=10)
 def s_binomios():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
-
-    f_binomios.grid(row=0, column=1, padx=10,pady=10)
-    l_res = Label(f_binomios, text="Ingresa el exponente en Entero")
+    new_window = Toplevel(root)
+    new_window.title("Binomio de Newton")
+    new_window.geometry("350x350")
+    l_res = Label(new_window, text="Ingresa el exponente en Entero")
     l_res.pack()
-    exGeneral = Entry(f_binomios,width=10)
+    exGeneral = Entry(new_window,width=10)
     exGeneral.pack()
 
     def cal_binomios(exGeneral):
@@ -571,33 +601,21 @@ def s_binomios():
                 exA = exA-1
                 exB = exB+1
             ej = (str(ecuaciones)).replace(","," +").replace("'","").replace("[","").replace("]","")
-            l_res = Label(f_binomios, text=ej)
+            l_res = Label(new_window, text=ej)
             l_res.pack()
             
             # print(ej) 
 
-    b_calcular = Button(f_binomios, text="Calcular", command=lambda: cal_binomios(int(exGeneral.get())))
+    b_calcular = Button(new_window, text="Calcular", command=lambda: cal_binomios(int(exGeneral.get())))
     b_calcular.pack()
 
-f_pascal = LabelFrame(root, text="Triangulo de Pascal", padx=10,pady=10)
 def s_pascal():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
-
-    f_pascal.grid(row=0,column=1,padx=10,pady=10)
-    l_res = Label(f_pascal, text="Ingresa el exponente en Entero")
+    new_window = Toplevel(root)
+    new_window.title("Triangulo de Pasacal")
+    new_window.geometry("350x350")
+    l_res = Label(new_window, text="Ingresa el exponente en Entero")
     l_res.pack()
-    exGeneral = Entry(f_pascal,width=10)
+    exGeneral = Entry(new_window,width=10)
     exGeneral.pack()
 
     def cal_pascal(exGeneral):
@@ -631,33 +649,21 @@ def s_pascal():
                 exA = exA-1
                 exB = exB+1
             ej = (str(ecuaciones)).replace(",","")
-            l_res = Label(f_pascal, text=ej)
+            l_res = Label(new_window, text=ej)
             l_res.pack()
             # print(ej)        
 
-    b_calcular = Button(f_pascal, text="Calcular", command=lambda: cal_pascal(int(exGeneral.get())))
+    b_calcular = Button(new_window, text="Calcular", command=lambda: cal_pascal(int(exGeneral.get())))
     b_calcular.pack()
 
-f_derivadas = LabelFrame(root, text="Derivadas", padx=10,pady=10)
 def s_derivadas():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
-
-    f_derivadas.grid(row=0,column=1,padx=10,pady=10)
-    l_res = Label(f_derivadas, text="Ingresa la ecuacion (2x^2-x+1)")
+    new_window = Toplevel(root)
+    new_window.title("Regla 4 pasos")
+    new_window.geometry("350x350")
+    l_res = Label(new_window, text="Ingresa la ecuacion (2x^2-x+1)")
     l_res.pack()
 
-    ecu = Entry(f_derivadas,width=10)
+    ecu = Entry(new_window,width=10)
     ecu.pack()
 
     def cal_derivadas(ecu):
@@ -763,41 +769,31 @@ def s_derivadas():
                 formato.append(a+b)
                 
             yo = str(formato).replace(" ","").replace("[","").replace("]","").replace("'","").replace(","," ")
-            l_res = Label(f_derivadas, text=yo)
+            l_res = Label(new_window, text=yo)
             l_res.pack()
         
         ecuacion4to(strtoarray(ecu))
 
-    b_calcular = Button(f_derivadas, text="Calcular", command=lambda: cal_derivadas(ecu.get()))
+    b_calcular = Button(new_window, text="Calcular", command=lambda: cal_derivadas(ecu.get()))
     b_calcular.pack()
 
-f_limites = LabelFrame(root, text="Limites", padx=10, pady=10)
-def s_limites():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
 
-    f_limites.grid(row=0,column=1,padx=10,pady=10)
-    l_res = Label(f_limites,text="Ingresa la ecuacion 1 (2*x**2 +5)> ")
+def s_limites():
+
+    new_window = Toplevel(root)
+    new_window.title("Regiones")
+    new_window.geometry("350x350")
+    l_res = Label(new_window,text="Ingresa la ecuacion 1 (2*x**2 +5)> ")
     l_res.pack()
-    ecu = Entry(f_limites,width=15)
+    ecu = Entry(new_window,width=15)
     ecu.pack()
-    l_res2 = Label(f_limites,text="Ingresa la ecuacion 2 (2*x**2 +5)> ")
+    l_res2 = Label(new_window,text="Ingresa la ecuacion 2 (2*x**2 +5)> ")
     l_res2.pack()
-    ecu1 = Entry(f_limites,width=15)
+    ecu1 = Entry(new_window,width=15)
     ecu1.pack()
 
     def cal_limites(ecu,ecu1):
-        l_res = Label(f_limites, text="Limite de "+ ecu +" y "+ecu1)
+        l_res = Label(new_window, text="Limite de "+ ecu +" y "+ecu1)
         l_res.pack()
         x = s.symbols('x')
         part1 = s.sympify(ecu)
@@ -899,44 +895,32 @@ def s_limites():
                     break
             if stop == False:
                 raices.append(raiz)
-                l_res = Label(f_limites, text=str(raiz))
+                l_res = Label(new_window, text=str(raiz))
                 l_res.pack()
     
-    b_calcular = Button(f_limites, text="Calcular", command=lambda: cal_limites(ecu.get(),ecu1.get()))
+    b_calcular = Button(new_window, text="Calcular", command=lambda: cal_limites(ecu.get(),ecu1.get()))
     b_calcular.pack()
 
-f_areas = LabelFrame(root, text="Areas", padx=10,pady=10)
-def s_areas():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
-    
 
-    f_areas.grid(row=0,column=1,padx=10,pady=10)
-    l_res = Label(f_areas,text="Ingresa la ecuacion (2*x**2 +5)> ")
+def s_areas():
+    new_window = Toplevel(root)
+    new_window.title("Areas")
+    new_window.geometry("350x350")
+    l_res = Label(new_window,text="Ingresa la ecuacion (2*x**2 +5)> ")
     l_res.pack()
-    ecu = Entry(f_areas,width=15)
+    ecu = Entry(new_window,width=15)
     ecu.pack()
-    l_res2 = Label(f_areas,text="Ingresa el limite inferior (1)> ")
+    l_res2 = Label(new_window,text="Ingresa el limite inferior (1)> ")
     l_res2.pack()
-    limi = Entry(f_areas,width=15)
+    limi = Entry(new_window,width=15)
     limi.pack()
-    l_res3 = Label(f_areas,text="Ingresa el limite superior (2)> ")
+    l_res3 = Label(new_window,text="Ingresa el limite superior (2)> ")
     l_res3.pack()
-    lims = Entry(f_areas,width=15)
+    lims = Entry(new_window,width=15)
     lims.pack()
     
     def cal_area(ecu,limi,lims):
-        l_res = Label(f_areas, text=ecu+" | "+"LI"+" | "+"LS"+" | "+"Area")
+        l_res = Label(new_window, text=ecu+" | "+"LI"+" | "+"LS"+" | "+"Area")
         l_res.pack()
         def traductorX(x,ecuacion):
     
@@ -965,40 +949,28 @@ def s_areas():
             yf= traductorX(xf,ecuacion)
             Al += (yf+yi)/2*h
 
-        l_res = Label(f_areas, text=ecu+" | "+str(limI)+" | "+str(limF)+" | "+str(Al))
+        l_res = Label(new_window, text=ecu+" | "+str(limI)+" | "+str(limF)+" | "+str(Al))
         l_res.pack()
     
-    b_calcular = Button(f_areas, text="Calcular", command=lambda: cal_area(ecu.get(),limi.get(),lims.get()))
+    b_calcular = Button(new_window, text="Calcular", command=lambda: cal_area(ecu.get(),limi.get(),lims.get()))
     b_calcular.pack()
 
-f_balance = LabelFrame(root, text="Balance", padx=10,pady=10)
+
 def s_balance():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
-    
+    new_window = Toplevel(root)
+    new_window.title("Punto de balance y Retorno")
+    new_window.geometry("350x350")
 
-    f_balance.grid(row=0,column=1,padx=10,pady=10)
-
-    l_ecu1 = Label(f_balance,text="Ingresa la primera ecuacion (2x**2+5)> ")
+    l_ecu1 = Label(new_window,text="Ingresa la primera ecuacion (2x**2+5)> ")
     l_ecu1.pack()
 
-    ecu1 = Entry(f_balance,width=15)
+    ecu1 = Entry(new_window,width=15)
     ecu1.pack()
 
-    l_ecu2 = Label(f_balance,text="Ingresa la segunda ecuacion (2x**2+5)> ")
+    l_ecu2 = Label(new_window,text="Ingresa la segunda ecuacion (2x**2+5)> ")
     l_ecu2.pack()
 
-    ecu2 = Entry(f_balance,width=15)
+    ecu2 = Entry(new_window,width=15)
     ecu2.pack()
 
     def cal_balance(ecu1,ecu2):
@@ -1167,53 +1139,40 @@ def s_balance():
         print("Punto de retorno", sacarRaiz(igualar(a,b)))
 
         
-        l_res = Label(f_balance, text="Punto de equilibrio: " + str(round(superior,4)))
+        l_res = Label(new_window, text="Punto de equilibrio: " + str(round(superior,4)))
         l_res.pack()
 
-        l_res = Label(f_balance, text="Monto de retorno: " + str(round(resultado,4)))
+        l_res = Label(new_window, text="Monto de retorno: " + str(round(resultado,4)))
         l_res.pack()
 
-        l_res = Label(f_balance, text="Punto de retorno: " + str(round(sacarRaiz(igualar(a,b)),4)))
+        l_res = Label(new_window, text="Punto de retorno: " + str(round(sacarRaiz(igualar(a,b)),4)))
         l_res.pack()
 
         
     
-    b_calcular = Button(f_balance, text="Calcular", command=lambda: cal_balance(ecu1.get(),ecu2.get()))
+    b_calcular = Button(new_window, text="Calcular", command=lambda: cal_balance(ecu1.get(),ecu2.get()))
     b_calcular.pack()
 
-f_rectas = LabelFrame(root, text="Rectas", padx=10,pady=10)
 def s_rectas():
-    f_formula.grid_forget()
-    f_newton.grid_forget()
-    f_signos.grid_forget()
-    f_posibles.grid_forget()
-    f_sintetica.grid_forget()
-    f_binomios.grid_forget()
-    f_pascal.grid_forget()
-    f_derivadas.grid_forget()
-    f_limites.grid_forget()
-    f_areas.grid_forget()
-    f_autor.grid_forget()
-    f_autor1.grid_forget()
-    
-
-    f_rectas.grid(row=0,column=1,padx=10,pady=10)
-    l_mes = Label(f_rectas,text="Ingrese el mes en digitos (1-12)> ")
+    new_window = Toplevel(root)
+    new_window.title("Curvas")
+    new_window.geometry("350x350")
+    l_mes = Label(new_window,text="Ingrese el mes en digitos (1-12)> ")
     l_mes.pack()
 
-    mes = Entry(f_rectas,width=15)
+    mes = Entry(new_window,width=15)
     mes.pack()
 
-    l_dia = Label(f_rectas,text="Ingrese el dia en digitos (1-31)> ")
+    l_dia = Label(new_window,text="Ingrese el dia en digitos (1-31)> ")
     l_dia.pack()
 
-    dia = Entry(f_rectas,width=15)
+    dia = Entry(new_window,width=15)
     dia.pack()
 
-    l_valor = Label(f_rectas,text="Ingrese el valor> ")
+    l_valor = Label(new_window,text="Ingrese el valor> ")
     l_valor.pack()
 
-    valor = Entry(f_rectas,width=15)
+    valor = Entry(new_window,width=15)
     valor.pack()
 
 
@@ -1296,10 +1255,10 @@ def s_rectas():
         for i in range(nt):
             xt[i] = a[i][nt]/a[i][i]
 
-        l_res = Label(f_rectas, text="Ecuacion")
+        l_res = Label(new_window, text="Ecuacion")
         l_res.pack()
 
-        l_res = Label(f_rectas, text=str(round(xt[2],3))+"x**2"+isPos(xt[1])+str(round(xt[1],3))+"x"+isPos(xt[1])+str(round(xt[0],3)))
+        l_res = Label(new_window, text=str(round(xt[2],3))+"x**2"+isPos(xt[1])+str(round(xt[1],3))+"x"+isPos(xt[1])+str(round(xt[0],3)))
         l_res.pack()
 
         
@@ -1315,22 +1274,15 @@ def s_rectas():
         return registro(x, y)
     
     registros = []
-    b_anandir = Button(f_rectas, text="Añadir", command=lambda: registros.append(addRegistro(int(mes.get()),int(dia.get()),float(valor.get()))))
+    b_anandir = Button(new_window, text="Añadir", command=lambda: registros.append(addRegistro(int(mes.get()),int(dia.get()),float(valor.get()))))
     b_anandir.pack()
 
-    b_calcular = Button(f_rectas, text="Calcular", command=lambda: calcular_recta(registros))
+    b_calcular = Button(new_window, text="Calcular", command=lambda: calcular_recta(registros))
     b_calcular.pack()
 
 f_autor = LabelFrame(root, text="Autor = Costas Rueda Juan Pablo",padx=10,pady=10)
 f_autor1 = LabelFrame(root,text="Autor",padx=10,pady=10)
 def s_autor():
-    f_formula.grid_remove()
-    f_newton.grid_remove()
-    f_signos.grid_remove()
-    f_posibles.grid_remove()
-    f_sintetica.grid_remove()
-    f_binomios.grid_remove()
-    f_pascal.grid_remove()
     f_autor.grid_remove()
     f_autor1.grid_remove()
 
@@ -1372,45 +1324,46 @@ def s_autor():
 
 
 
-
+b_gauss = Button(f_menu, text="Gauss-Jordan", command=ej_gauss)
+b_gauss.pack(pady=5)
 
 b_formula = Button(f_menu, text="Formula Genral", command=s_formula)
-b_formula.pack()
+b_formula.pack(pady=5)
 
 b_newton = Button(f_menu, text="Newton Rapthson", command=s_newton)
-b_newton.pack()
+b_newton.pack(pady=5)
 
 b_signos = Button(f_menu, text="Ley de Signos", command=s_signos)
-b_signos.pack()
+b_signos.pack(pady=5)
 
 b_posibles = Button(f_menu, text="Posibles Raices", command=s_posibes)
-b_posibles.pack()
+b_posibles.pack(pady=5)
 
 b_sintetica = Button(f_menu, text="Division Sintetica", command=s_sintetica)
-b_sintetica.pack()
+b_sintetica.pack(pady=5)
 
 b_binomios = Button(f_menu, text="Binomios de Newton", command=s_binomios)
-b_binomios.pack()
+b_binomios.pack(pady=5)
 
 b_pascal = Button(f_menu, text="Triangulo de Pascal", command=s_pascal)
-b_pascal.pack()
+b_pascal.pack(pady=5)
 
 b_binomios = Button(f_menu, text="Derivadas", command=s_derivadas)
-b_binomios.pack()
+b_binomios.pack(pady=5)
 
 b_limites = Button(f_menu, text="Limites", command=s_limites)
-b_limites.pack()
+b_limites.pack(pady=5)
 
 b_areas = Button(f_menu,text="Areas", command=s_areas)
-b_areas.pack()
+b_areas.pack(pady=5)
 
-b_balance = Button(f_menu,text="Balance", command=s_balance)
-b_balance.pack()
+b_balance = Button(f_menu,text="Punto de balance y retorno", command=s_balance)
+b_balance.pack(pady=5)
 
 b_rectas = Button(f_menu,text="Curvas", command=s_rectas)
-b_rectas.pack()
+b_rectas.pack(pady=5)
 
 b_autor = Button(f_menu, text="Autor", command=s_autor)
-b_autor.pack()
+b_autor.pack(pady=5)
 
 root.mainloop()
