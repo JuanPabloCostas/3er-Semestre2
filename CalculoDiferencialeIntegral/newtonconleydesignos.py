@@ -17,7 +17,7 @@ def intify(subject):
         aux.extend(subject.split("/"))
         return float(aux[0]) / float(aux[1])
     else:
-b        return float(subject)
+        return float(subject)
 
 def aObjeto(imput):
     imput = imput.replace("+","@").replace("-","@-")
