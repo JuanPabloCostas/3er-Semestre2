@@ -15,9 +15,9 @@ def intify(subject):
     elif "/" in subject:
         aux = []
         aux.extend(subject.split("/"))
-        return int(aux[0]) / int(aux[1])
+        return float(aux[0]) / float(aux[1])
     else:
-        return int(subject)
+b        return float(subject)
 
 def aObjeto(imput):
     imput = imput.replace("+","@").replace("-","@-")
@@ -44,8 +44,8 @@ def aObjeto(imput):
     
     return conjunto
 
-a = "2x+5"
-b = "3x**2+2x"
+a = "0.5/3x**3"
+b = "3/2x**2+125x"
 
 a = aObjeto(a)
 b = aObjeto(b)
